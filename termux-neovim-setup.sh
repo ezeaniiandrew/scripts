@@ -40,7 +40,7 @@ ask_permission() {
   local answer
 
   while true; do
-    read -r -p "$1 [y/N]: " answer
+    read -r -p "$1 [y/N]: " answer </dev/tty
 
     case "$answer" in
     [Yy] | [Yy][Ee][Ss])
@@ -116,7 +116,7 @@ if echo "$UPGRADE_CHECK" | grep -qE '^Inst '; then
   action "Upgrading installed packages..."
   echo
 
-  pkg upgrade
+  pkg upgrade </dev/tty
 
   echo
   success "Package upgrades completed."
@@ -169,7 +169,7 @@ if [ "${#MISSING_PACKAGES[@]}" -gt 0 ]; then
   for package in "${MISSING_PACKAGES[@]}"; do
     action "Installing $package..."
 
-    if pkg install "$package"; then
+    if pkg install "$package" </dev/tty; then
       success "$package installed successfully."
     else
       echo
