@@ -265,14 +265,15 @@ echo
 warning "Please wait for the installation to finish before"
 warning "doing anything in Neovim."
 echo
-success "Enjoy your new Neovim setup!"
-echo
 
 if ask_permission "Would you like to star the repository on GitHub?"; then
   action "Opening the repository in your browser..."
   termux-open-url "https://github.com/ezeaniiandrew/neovim-config"
-else
-  info "Thanks for using the setup script!"
+
+  echo
+  success "Thank you for supporting the project"
 fi
 
+echo
+success "Enjoy your new Neovim setup"
 echo
